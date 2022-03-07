@@ -11,7 +11,7 @@ function replace_howdy( $wp_admin_bar ) {
 add_filter( 'admin_bar_menu', 'replace_howdy',25 );
 
 //Remove unnecessary page templates
-function psc_remove_page_templates( $templates ) {
+function remove_page_templates( $templates ) {
     unset( $templates['page-templates/blank.php'] );
     unset( $templates['page-templates/empty.php'] );
     unset( $templates['page-templates/fullwidthpage.php'] );
@@ -20,16 +20,6 @@ function psc_remove_page_templates( $templates ) {
     unset( $templates['page-templates/both-sidebarspage.php'] );
     return $templates;
 }
-add_filter( 'theme_page_templates', 'psc_remove_page_templates' );
-
-if( function_exists('acf_add_options_page') ) {
-    
-    acf_add_options_page(array(
-        'page_title'    => 'Webinars',
-        'menu_title'    => 'Webinars',
-        'menu_slug'     => 'webinars',
-    ));
-    
-}
+add_filter( 'theme_page_templates', 'remove_page_templates' );
 
 ?>

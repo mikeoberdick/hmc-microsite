@@ -3,12 +3,12 @@
 /*------------------------------------------------*/
 html {
   @include fluid-type($min_width, $max_width, $min_font, $max_font);
+  background: #000;
 }
 
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 	color: $maroon;
 	font-family: $didact-gothic;
-  font-weight: bold;
   margin-bottom: 0;
 }
 
@@ -26,7 +26,8 @@ h3 {
 }
 
 body {
-	color: #000;
+  background-color: #000;
+	color: #fff;
 	font-family: $open-sans;
 }
 
@@ -36,29 +37,188 @@ body {
 
 .btn {
   font-family: $open-sans;
-  padding: .5rem 3rem !important;
+  padding: .5rem !important;
   white-space: normal;
-  color: #fff;
-  border: 0;
+  background-color: #fff;
+  color: #000;
+  border: solid 1px #fff;
   border-radius: 0;
   transition: all .5s;
+  text-transform: uppercase;
   font-weight: bold;
+  font-size: .9rem;
+  &:hover {
+    color: #fff !important;
+    background-color: #000 !important;
+    border-color: #fff !important;
+  }
 }
 /*------------------------------------------------*/
 /*--------------------[REUSEABLE STYLES]----------------------*/
 /*------------------------------------------------*/
+.wysiwyg {
+  p:last-of-type {
+    margin-bottom: 0;
+  }
+}
 
+#scroll_totop {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+  width: 36px;
+  height: 36px;
+  position: fixed;
+  right: 15px;
+  bottom: 15px;
+  z-index: 99;
+  border-radius: 18px;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 10%);
+  transition: box-shadow .25s cubic-bezier(0.165, 0.84, 0.44, 1);
+  @media only screen and (min-width: 40.0625em) {
+    right: 30px;
+    bottom: 30px;
+  }
+  &:hover {
+    box-shadow: 0 2px 8px rgba(0,0,0,.2);
+    svg {
+      .thb-arrow-head {
+        transform: translateX(0px);
+      }
+      .thb-arrow-line {
+        transform: translateX(0px) scale(1, 1);
+      }
+    }
+  }
+  svg {
+    transform: rotate(90deg);
+    .thb-arrow-head, .thb-arrow-line {
+      transition: all 0.25s cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+    .thb-arrow-head {
+      transform: translateX(5px);
+    }
+    .thb-arrow-line {
+      transform: translateX(5px) scale(0, 1);
+    }
+  }
+}
 
 /*------------------------------------------------*/
 /*--------------------[HOME]----------------------*/
 /*------------------------------------------------*/
 #homepage {
-}
-
-
-/*------------------------------------------------*/
-/*-------------------[FOOTER]---------------------*/
-/*------------------------------------------------*/
-#wrapperFooter {
-  
+  #hero {
+    padding-top: 100px;
+    padding-bottom: 100px;
+    background-position: center center !important;
+    background-size: contain !important;
+  }
+  #welcome {
+    background-color: $maroon;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    text-align: center;
+  }
+  #eventsHeader {
+    padding-top: 35px;
+    padding-bottom: 35px;
+    .header {
+      text-transform: uppercase;
+      color: #fff;
+      margin-bottom: 0;
+      font-weight: bold;
+    }
+  }
+  #webinars {
+    .webinar {
+      margin-bottom: 35px;
+      .inner-container {
+        border: 4px solid $maroon;
+        padding: 30px;
+        height: 100%;
+        .title {
+          font-weight: bold;
+          color: #fff;
+        }
+        .date-time {
+          color: #fff;
+        }
+        p {
+          font-size: .8rem;
+        }
+        .btn {
+          width: 100%;
+        }
+      }
+    }
+  }
+  #presentersHeader {
+    padding-top: 35px;
+    padding-bottom: 35px;
+    background-color: #fff;
+    .header {
+      text-transform: uppercase;
+      margin-bottom: 0;
+      font-weight: bold;
+    }
+  }
+  #presenters {
+    background-color: #fff;
+    .presenter {
+      margin-bottom: 35px;
+      .inner-container {
+        position: relative;
+        border: 4px solid $maroon;
+        padding: 30px;
+        color: #000;
+        .initial-info {
+          display: flex;
+          justify-content: space-between;
+          .left {
+            .name {
+              font-weight: bold;
+              color: #000;
+            }
+            .company {
+              font-style: italic;
+            }
+          }
+        }
+        .bio {
+          padding: 30px;
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          opacity: 0;
+          z-index: -1;
+          background-color: #b12328de;
+          transition: opacity .5s;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          .headshot {
+            height: 100%;
+            flex: .3 1 0;
+            img {
+              height: 100%;
+            }
+          }
+          .wysiwyg {
+            flex: 1 1 0;
+            font-size: .8rem;
+          }
+        }
+        &:hover {
+          border-color: #000;
+          .bio {
+            opacity: 1;
+            z-index: 1;
+          }
+        }
+      }
+    }
+  }
 }

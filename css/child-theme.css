@@ -14570,7 +14570,7 @@ a.skip-link {
 /*-------------------[LAYOUT/FONTS]----------------------*/
 /*------------------------------------------------*/
 html {
-  background: #000;
+  background: #fff;
 }
 html {
   font-size: 14px;
@@ -14644,9 +14644,13 @@ h3, .h3 {
 }
 
 body {
-  background-color: #000;
-  color: #fff;
+  color: #000;
   font-family: "Open Sans", sans-serif;
+}
+
+a {
+  color: #b12328;
+  text-decoration: underline;
 }
 
 /*------------------------------------------------*/
@@ -14656,28 +14660,38 @@ body {
   font-family: "Open Sans", sans-serif;
   padding: 0.5rem !important;
   white-space: normal;
-  background-color: #fff;
-  color: #000;
-  border: solid 1px #fff;
   border-radius: 0;
   transition: all 0.5s;
   text-transform: uppercase;
   font-weight: bold;
   font-size: 0.9rem;
 }
-.btn:hover {
+
+.white-button {
+  background-color: #fff;
+  color: #000;
+  border: solid 1px #000;
+}
+.white-button:hover {
   color: #fff !important;
   background-color: #000 !important;
   border-color: #fff !important;
 }
 
+.black-button {
+  background-color: #000;
+  color: #fff;
+  border: solid 1px #fff;
+}
+.black-button:hover {
+  color: #000 !important;
+  background-color: #fff !important;
+  border-color: #000 !important;
+}
+
 /*------------------------------------------------*/
 /*--------------------[REUSEABLE STYLES]----------------------*/
 /*------------------------------------------------*/
-.wysiwyg p:last-of-type {
-  margin-bottom: 0;
-}
-
 #scroll_totop {
   display: flex;
   justify-content: center;
@@ -14725,16 +14739,16 @@ body {
 /*--------------------[HOME]----------------------*/
 /*------------------------------------------------*/
 #homepage #hero {
-  padding-top: 100px;
-  padding-bottom: 100px;
-  background-position: center center !important;
-  background-size: contain !important;
+  padding-top: 50px;
+  padding-bottom: 50px;
 }
 #homepage #welcome {
   background-color: #b12328;
+  color: #fff;
   padding-top: 50px;
   padding-bottom: 50px;
   text-align: center;
+  font-size: 1.25rem;
 }
 #homepage #eventsHeader {
   padding-top: 35px;
@@ -14742,24 +14756,36 @@ body {
 }
 #homepage #eventsHeader .header {
   text-transform: uppercase;
-  color: #fff;
   margin-bottom: 0;
   font-weight: bold;
+}
+#homepage #webinars {
+  background-color: #fff;
 }
 #homepage #webinars .webinar {
   margin-bottom: 35px;
 }
 #homepage #webinars .webinar .inner-container {
   border: 4px solid #b12328;
-  padding: 30px;
+  padding: 25px;
   height: 100%;
+}
+#homepage #webinars .webinar .inner-container .date-time {
+  color: #000;
 }
 #homepage #webinars .webinar .inner-container .title {
   font-weight: bold;
-  color: #fff;
+  color: #000;
 }
-#homepage #webinars .webinar .inner-container .date-time {
-  color: #fff;
+#homepage #webinars .webinar .inner-container .presenter-headshots {
+  display: flex;
+}
+#homepage #webinars .webinar .inner-container .presenter-headshots .headshot-small img {
+  border-radius: 50%;
+  margin-right: 15px;
+}
+#homepage #webinars .webinar .inner-container .presenter-headshots .headshot-small:last-of-type img {
+  margin-right: 0;
 }
 #homepage #webinars .webinar .inner-container p {
   font-size: 0.8rem;
@@ -14770,15 +14796,14 @@ body {
 #homepage #presentersHeader {
   padding-top: 35px;
   padding-bottom: 35px;
-  background-color: #fff;
 }
 #homepage #presentersHeader .header {
   text-transform: uppercase;
   margin-bottom: 0;
   font-weight: bold;
 }
-#homepage #presenters {
-  background-color: #fff;
+#homepage #presenters .date {
+  color: #000;
 }
 #homepage #presenters .presenter {
   margin-bottom: 35px;
@@ -14787,48 +14812,119 @@ body {
   position: relative;
   border: 4px solid #b12328;
   padding: 30px;
-  color: #000;
+  color: #fff;
 }
 #homepage #presenters .presenter .inner-container .initial-info {
   display: flex;
+  flex-direction: column;
+}
+#homepage #presenters .presenter .inner-container .initial-info .row-wrapper {
+  display: flex;
   justify-content: space-between;
 }
-#homepage #presenters .presenter .inner-container .initial-info .left .name {
+#homepage #presenters .presenter .inner-container .initial-info .row-wrapper .left {
+  flex: 0 0 50%;
+}
+@media (max-width: 767.98px) {
+  #homepage #presenters .presenter .inner-container .initial-info .row-wrapper .left {
+    flex-basis: 65%;
+  }
+}
+@media (max-width: 575.98px) {
+  #homepage #presenters .presenter .inner-container .initial-info .row-wrapper .left {
+    flex-basis: 75%;
+  }
+}
+#homepage #presenters .presenter .inner-container .initial-info .row-wrapper .left .name {
   font-weight: bold;
+  color: #b12328;
+}
+#homepage #presenters .presenter .inner-container .initial-info .row-wrapper .left .title {
   color: #000;
 }
-#homepage #presenters .presenter .inner-container .initial-info .left .company {
+#homepage #presenters .presenter .inner-container .initial-info .row-wrapper .left .company {
+  color: #000;
   font-style: italic;
+}
+#homepage #presenters .presenter .inner-container .initial-info .row-wrapper .right {
+  flex: 0 0 47.5%;
+  margin-left: 2.5%;
+  text-align: right;
+}
+@media (max-width: 767.98px) {
+  #homepage #presenters .presenter .inner-container .initial-info .row-wrapper .right {
+    flex-basis: 32.5%;
+  }
+}
+@media (max-width: 575.98px) {
+  #homepage #presenters .presenter .inner-container .initial-info .row-wrapper .right {
+    flex-basis: 22.5%;
+  }
 }
 #homepage #presenters .presenter .inner-container .bio {
   padding: 30px;
   position: absolute;
-  top: 0;
   bottom: 0;
   left: 0;
+  right: 0;
   opacity: 0;
   z-index: -1;
-  background-color: #b12328de;
+  background-color: #b12328;
   transition: opacity 0.5s;
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items: center;
 }
-#homepage #presenters .presenter .inner-container .bio .headshot {
+@media only screen and (max-width: 464px) {
+  #homepage #presenters .presenter .inner-container .bio {
+    text-align: center;
+  }
+}
+#homepage #presenters .presenter .inner-container .bio .row-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+@media only screen and (max-width: 464px) {
+  #homepage #presenters .presenter .inner-container .bio .row-wrapper {
+    flex-direction: column;
+  }
+}
+#homepage #presenters .presenter .inner-container .bio .row-wrapper .left {
   height: 100%;
-  flex: 0.3 1 0;
+  flex: 0.175 1 0;
 }
-#homepage #presenters .presenter .inner-container .bio .headshot img {
-  height: 100%;
+@media (max-width: 767.98px) {
+  #homepage #presenters .presenter .inner-container .bio .row-wrapper .left {
+    flex: 1 1 0%;
+  }
 }
-#homepage #presenters .presenter .inner-container .bio .wysiwyg {
+@media only screen and (max-width: 464px) {
+  #homepage #presenters .presenter .inner-container .bio .row-wrapper .left {
+    margin-bottom: 25px;
+  }
+}
+#homepage #presenters .presenter .inner-container .bio .row-wrapper .right {
+  flex: 1 1 0;
+}
+@media (max-width: 767.98px) {
+  #homepage #presenters .presenter .inner-container .bio .row-wrapper .right {
+    flex: 1 1 20%;
+  }
+}
+#homepage #presenters .presenter .inner-container .bio .row-wrapper .right .presenter-name {
+  font-weight: bold;
+  color: #000;
+}
+#homepage #presenters .presenter .inner-container .bio .row-wrapper .right .wysiwyg {
   flex: 1 1 0;
   font-size: 0.8rem;
 }
 #homepage #presenters .presenter .inner-container:hover {
   border-color: #000;
+  overflow: hidden;
 }
 #homepage #presenters .presenter .inner-container:hover .bio {
+  top: 0;
   opacity: 1;
   z-index: 1;
 }

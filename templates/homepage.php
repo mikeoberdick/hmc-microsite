@@ -115,9 +115,9 @@ get_header(); ?>
 					<?php while(have_rows('webinars')) : the_row(); ?>
 						<?php $i = 1; while(have_rows('webinar_list')) : the_row(); ?>
 							<div id = "<?php echo 'presenter' . $i; ?>" class="row">
-								<div class="col-md-2">
+								<div class="col-sm-12">
 									<h5 class = "date fw-bold mb-3 mb-md-0"><?php the_sub_field('date'); ?></h5>
-								</div><!-- .col-md-2 -->
+								</div><!-- .col-sm-12 -->
 								<div class="presenter col-md-10">
 									<div class="inner-container">
 										<div class="initial-info">

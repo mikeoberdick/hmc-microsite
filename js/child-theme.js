@@ -9299,7 +9299,13 @@
 	jQuery(function ($) {
 	  $(window).load(function () {
 	    // Push down footer section on short pages
-	    $('#js-heightControl').css('height', $(window).height() - $('html').height() + 'px');
+	    $('#js-heightControl').css('height', $(window).height() - $('html').height() + 'px'); //Toggle functionality for speakers
+
+	    $('.toggle').on('click', function () {
+	      var $not = $(this).parent().add($(this));
+	      $('.presenter-wrapper').not($not).removeClass('active');
+	      $(this).parent().toggleClass('active');
+	    });
 	    $('.presenter .inner-container').each(function (i) {
 	      //Get height of the initial content
 	      var initialHeight = $(this).outerHeight(); //Get height of the presenter info box

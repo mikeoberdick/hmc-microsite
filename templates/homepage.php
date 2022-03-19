@@ -113,67 +113,66 @@ get_header(); ?>
 			<section id="presenters">
 				<div class="container">
 					<?php while(have_rows('webinars')) : the_row(); ?>
+
 						<?php $i = 1; while(have_rows('webinar_list')) : the_row(); ?>
-							<div id = "<?php echo 'presenter' . $i; ?>" class="row">
-								<div class="col-sm-12">
+
+							<div id = "<?php echo 'presenter' . $i; ?>" class="row mb-3">
+								<div class="col-sm-12 mb-3">
 									<h5 class = "date fw-bold mb-3 mb-md-0"><?php the_sub_field('date'); ?></h5>
 								</div><!-- .col-sm-12 -->
-								<div class="presenter col-md-10">
-									<div class="inner-container">
-										<div class="initial-info">
-										<?php $count = count(get_sub_field('presenters')); ?>
-										<?php $p = 1; while(have_rows('presenters')) : the_row(); ?>
-											<div class="row<?php if ($p != $count) {echo ' mb-3';} ?>">
-												<div class="row-wrapper col-sm-12">
-													<div class="left">
-														<h3 class = "name"><?php the_sub_field('presenter'); ?></h3>
-														<h5 class = "title"><?php the_sub_field('job_title'); ?></h5>
-														<h6 class = "company"><?php the_sub_field('company'); ?></h6>
-													</div><!-- .left -->
-													<div class="right">
-														<?php $company = get_sub_field('company_logo'); ?>
-														<div class = "company-logo">
-															<img src = "<?php echo $company['sizes']['company-logo']; ?>" alt="<?php echo $company['alt']; ?>">	
-														</div>
-													</div><!-- .right -->
-												</div><!-- .col-sm-12 -->
-											</div><!-- .row -->
-										<?php $p++; endwhile; ?>
-										</div><!-- .initial-info -->
-										<div class="bio">
-											<?php $b = 1; while(have_rows('presenters')) : the_row(); ?>
-											<div class="row<?php if ($b != $count) {echo ' mb-3';} ?>">
-												<div class="row-wrapper col-sm-12">
-													<?php $headshot = get_sub_field('presenter_image'); ?>
-													<?php if ($headshot) : ?>
-													<div class="left">
-														<img src = "<?php echo $headshot['sizes']['headshot']; ?>" alt="<?php echo $headshot['alt']; ?>">
-													</div><!-- .left -->
-													<?php endif ?>
-													<div class = "right">
-														<h3 class="presenter-name mb-1"><?php the_sub_field('presenter'); ?></h3>
-														<?php $bio = get_sub_field('presenter_bio'); ?>
-														<?php if ($bio) { ?>
-															<div class="wysiwyg">
-																<?php echo $bio; ?>
-															</div><!-- .wysiwyg -->
-														<?php } else { ?>
-															<div class="title">
-																<?php the_sub_field('job_title'); ?>
-															</div><!-- .title -->
-														<?php } ?>
-													</div><!-- .right -->
-												</div><!-- .col-sm-12 -->
-											</div><!-- .row -->
-										<?php $b++; endwhile; ?>
-										</div><!-- .bio -->
-										<a class = "d-inline-block d-lg-none show-bio mt-2" href="#">View Bios</a>
-									</div><!-- .inner-container -->
-								</div><!-- .col-md-10 -->
-							</div><!-- .row -->
+								
+								<div id="presenterGroup<?php echo $i; ?>">
+									<?php $count = count(get_sub_field('presenters')); ?>
+                    				<?php $p = 1; while(have_rows('presenters')) : the_row(); ?>
+							        <div class ="presenter-wrapper<?php if ($p != $count) {echo ' mb-3';} ?>">
+							        	<?php $headshot = get_sub_field('presenter_image'); ?>
+							        	<?php $bio = get_sub_field('presenter_bio'); ?>
+							        	<?php if ($headshot || $bio) : ?>
+							        	<div class="toggle">
+							        		<i class="fa fa-plus-circle" aria-hidden="true"></i>
+							        		<i class="fa fa-minus-circle" aria-hidden="true"></i>
+							        	</div><!-- .toggle -->
+							        <?php endif; ?>
+							        	<div class = "d-flex">
+								        	<div class="left">
+									            <h3 class = "name"><?php the_sub_field('presenter'); ?></h3>
+									            <h5 class = "title"><?php the_sub_field('job_title'); ?></h5>
+									            <h6 class = "company"><?php the_sub_field('company'); ?></h6>
+									          </div><!-- .left -->
+									          <div class="right">
+									            <?php $company = get_sub_field('company_logo'); ?>
+									            <div class = "company-logo">
+									              <img src = "<?php echo $company['sizes']['company-logo']; ?>" alt="<?php echo $company['alt']; ?>"> 
+									            </div>
+									          </div><!-- .right -->	
+							        	</div>
+							        
+							        <?php if ($headshot || $bio) : ?>
+								    <div id="<?php echo 'webinar' . $i . 'speaker' . $p . 'info'; ?>" class = "presenter-child">
+								        <div class="col-sm-12 inner-wrapper">
+								          <?php if ($headshot) : ?>
+								          <div class="left">
+								            <img src = "<?php echo $headshot['url']; ?>" alt="<?php echo $headshot['alt']; ?>">
+								          </div><!-- .left -->
+								          <?php endif ?>
+
+								          <?php if ($bio) : ?>
+								          <div class = "right">
+								              <div class="wysiwyg">
+								                <?php echo $bio; ?>
+								              </div><!-- .wysiwyg -->
+								          </div><!-- .right -->
+								          <?php endif; ?>
+								        </div><!-- .col-sm-12 -->
+								    </div><!-- <?php echo 'webinar' . $i . 'speaker' . $p . 'info'; ?> -->
+								<?php endif; ?>
+								</div><!-- .presenter-wrapper -->
+								    <?php $p++; endwhile; ?>
+									  </div><!-- #presenterGroup<?php echo $i; ?> -->
+								</div><!-- #<?php echo 'presenter' . $i; ?> -->
 						<?php $i++; endwhile; ?>
 					<?php endwhile; ?>
-				</div><!-- .container -->
+				</div><!-- .container -->							
 			</section><!-- #presenters -->
 
 		</div><!-- #homepage -->
